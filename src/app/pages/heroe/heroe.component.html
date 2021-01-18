@@ -48,7 +48,8 @@
                        class="form-control"
                        placeholder="Poder del Héroe"
                        [(ngModel)]="heroe.poder"
-                       name="poder">
+                       name="poder"
+                       required>
 
             </div>
 
@@ -76,6 +77,11 @@
             <hr>
 
 
+            <div *ngIf="camposVacios"
+                class="text-center bg-danger text-light rounded mb-2">
+                <p class="pt-2 pb-2">Todos los campos son obligatorios</p>
+            </div>
+
 
             <div class="form-group text-center">
                 <button type="submit"
@@ -88,3 +94,4 @@
         </form>
     </div>
 </div>
+

@@ -16,6 +16,7 @@ import Swal from "sweetalert2";
 export class HeroeComponent implements OnInit {
 
   heroe = new HeroeModel(); 
+  camposVacios: boolean = false;
 
   constructor( private heroesService : HeroesService,
                private route : ActivatedRoute  ) { }
@@ -38,11 +39,16 @@ export class HeroeComponent implements OnInit {
 
   guardar( form  ){
 
+    //If the form is invalid, the HTML will show an alert and the info won´t be sent
     if ( form.invalid ) {
-      console.log('CAmpos en blanco');
+      this.camposVacios = true
       return
     }
 
+
+    //Disaper the alert because th form.valid === true
+    this.camposVacios = false;
+    
     Swal.fire({
       title:'Espere...',
       text:'guardando información',
@@ -69,6 +75,7 @@ export class HeroeComponent implements OnInit {
 
     } )
 
+    form.reset()
    
   }
 
